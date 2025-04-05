@@ -5,7 +5,6 @@ class HelpSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // Help Section
         Container(
           color: Colors.white,
           padding: const EdgeInsets.symmetric(vertical: 64, horizontal: 140),
@@ -21,18 +20,18 @@ class HelpSection extends StatelessWidget {
                     'How We Can Help You',
                     style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFF2F3651),
+                          color: const Color(0xFF2F3651),
                         ),
                     textAlign: isWide ? TextAlign.start : TextAlign.center,
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   Text(
                     'Follow our newsletter. We will regularly update\nour latest projects and availability.',
                     style: TextStyle(fontSize: 18, color: Colors.grey[700]),
                     textAlign: isWide ? TextAlign.start : TextAlign.center,
                   ),
-                  SizedBox(height: 32),
-                  emailForm(isWide),
+                  const SizedBox(height: 32),
+                  _emailForm(isWide),
                 ],
               );
 
@@ -41,10 +40,10 @@ class HelpSection extends StatelessWidget {
                 runSpacing: 40,
                 alignment: WrapAlignment.center,
                 children: [
-                  serviceTile(Icons.grid_view_rounded, 'UI/UX Design'),
-                  serviceTile(Icons.brush_outlined, 'Logo Branding'),
-                  serviceTile(Icons.phone_iphone_outlined, 'App Design'),
-                  serviceTile(Icons.web_outlined, 'Website Design'),
+                  _serviceTile(Icons.grid_view_rounded, 'UI/UX Design'),
+                  _serviceTile(Icons.brush_outlined, 'Logo Branding'),
+                  _serviceTile(Icons.phone_iphone_outlined, 'App Design'),
+                  _serviceTile(Icons.web_outlined, 'Website Design'),
                 ],
               );
 
@@ -53,89 +52,34 @@ class HelpSection extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Expanded(flex: 1, child: helpHeader),
-                        SizedBox(width: 48),
-                        Expanded(flex: 1, child: Center(child: servicesGrid)),
+                        Expanded(child: helpHeader),
+                        const SizedBox(width: 48),
+                        Expanded(child: Center(child: servicesGrid)),
                       ],
                     )
                   : Column(
                       children: [
                         helpHeader,
-                        SizedBox(height: 48),
+                        const SizedBox(height: 48),
                         servicesGrid,
                       ],
                     );
             },
           ),
         ),
-
-        // Footer
-        Container(
-          color: Color(0xFF2F3651),
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 48),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Power.',
-                    style: TextStyle(
-                      fontSize: 38,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      footerSocialIcon(Icons.youtube_searched_for),
-                      footerSocialIcon(Icons.facebook),
-                      footerSocialIcon(Icons.alternate_email),
-                      footerSocialIcon(Icons.code),
-                      footerSocialIcon(Icons.camera_alt_outlined),
-                    ],
-                  )
-                ],
-              ),
-              Divider(color: Colors.white24, height: 40),
-              LayoutBuilder(
-                builder: (context, constraints) {
-                  final isWide = constraints.maxWidth > 600;
-                  return isWide
-                      ? Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [footerLinksColumn(), contactButton()],
-                        )
-                      : Column(
-                          children: [
-                            footerLinksColumn(),
-                            SizedBox(height: 16),
-                            contactButton(),
-                          ],
-                        );
-                },
-              ),
-              SizedBox(height: 32),
-              Text(
-                '© power 2021 – All Rights Reserved',
-                style: TextStyle(color: Colors.grey[400], fontSize: 12),
-              ),
-            ],
-          ),
-        ),
+        _buildFooter(context),
       ],
     );
   }
 
-  Widget emailForm(bool isWide) {
+  Widget _emailForm(bool isWide) {
     final emailInput = Container(
       width: 300,
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       decoration: BoxDecoration(
-        color: Color(0xFFF5F6FA),
+        color: const Color(0xFFF5F6FA),
         borderRadius: BorderRadius.circular(12),
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             color: Colors.black12,
             blurRadius: 4,
@@ -145,11 +89,11 @@ class HelpSection extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Icon(Icons.email_outlined, color: Colors.grey),
-          SizedBox(width: 8),
+          const Icon(Icons.email_outlined, color: Colors.grey),
+          const SizedBox(width: 8),
           Expanded(
             child: TextField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: 'Enter your email address',
                 border: InputBorder.none,
               ),
@@ -162,11 +106,11 @@ class HelpSection extends StatelessWidget {
     final subscribeButton = Container(
       height: 50,
       decoration: BoxDecoration(
-        gradient: LinearGradient(
+        gradient: const LinearGradient(
           colors: [Color(0xFF9288F8), Color(0xFF7F6AFF)],
         ),
         borderRadius: BorderRadius.circular(12),
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             color: Color(0x337F6AFF),
             offset: Offset(0, 6),
@@ -176,8 +120,8 @@ class HelpSection extends StatelessWidget {
       ),
       child: TextButton(
         onPressed: () {},
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20),
           child: Text(
             'Subscribe',
             style: TextStyle(color: Colors.white, fontSize: 16),
@@ -187,7 +131,7 @@ class HelpSection extends StatelessWidget {
     );
 
     return isWide
-        ? Row(children: [emailInput, SizedBox(width: 16), subscribeButton])
+        ? Row(children: [emailInput, const SizedBox(width: 16), subscribeButton])
         : Wrap(
             alignment: WrapAlignment.center,
             spacing: 16,
@@ -196,26 +140,26 @@ class HelpSection extends StatelessWidget {
           );
   }
 
-  Widget serviceTile(IconData icon, String title) {
+  Widget _serviceTile(IconData icon, String title) {
     return SizedBox(
       width: 160,
       child: Column(
         children: [
           Container(
-            padding: EdgeInsets.all(26),
+            padding: const EdgeInsets.all(26),
             decoration: BoxDecoration(
-              color: Color(0xFFF5F6FA),
+              color: const Color(0xFFF5F6FA),
               borderRadius: BorderRadius.circular(16),
-            ),  
-            child: Icon(icon, size: 26, color: Color(0xFF7F6AFF)),
+            ),
+            child: Icon(icon, size: 26, color: const Color(0xFF7F6AFF)),
           ),
-          SizedBox(height: 12),
+          const SizedBox(height: 12),
           Text(
             title,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             textAlign: TextAlign.center,
           ),
-          SizedBox(height: 6),
+          const SizedBox(height: 6),
           Text(
             'Sometimes features require a short description',
             textAlign: TextAlign.center,
@@ -226,63 +170,122 @@ class HelpSection extends StatelessWidget {
     );
   }
 
-  Widget footerSocialIcon(IconData icon) {
+  Widget _buildFooter(BuildContext context) {
+    return Container(
+      color: const Color(0xFF2F3651),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 48),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                'Power & Co',
+                style: TextStyle(
+                  fontSize: 38,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              Row(
+                children: [
+                  _footerSocialIcon(Icons.youtube_searched_for),
+                  _footerSocialIcon(Icons.facebook),
+                  _footerSocialIcon(Icons.alternate_email),
+                  _footerSocialIcon(Icons.code),
+                  _footerSocialIcon(Icons.camera_alt_outlined),
+                ],
+              ),
+            ],
+          ),
+          const Divider(color: Colors.white24, height: 40),
+          LayoutBuilder(
+            builder: (context, constraints) {
+              final isWide = constraints.maxWidth > 600;
+              return isWide
+                  ? Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [_footerLinksColumn(), _contactButton()],
+                    )
+                  : Column(
+                      children: [
+                        _footerLinksColumn(),
+                        const SizedBox(height: 16),
+                        _contactButton(),
+                      ],
+                    );
+            },
+          ),
+          const SizedBox(height: 32),
+          Text(
+            '© power & co 2025 – All Rights Reserved',
+            style: TextStyle(color: Colors.grey[400], fontSize: 14),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _footerSocialIcon(IconData icon) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 6),
       child: CircleAvatar(
         radius: 22,
-        backgroundColor: Color(0xFF7F6AFF),
+        backgroundColor: const Color(0xFF7F6AFF),
         child: Icon(icon, size: 26, color: Colors.white),
       ),
     );
   }
 
-  Widget footerLink(String title) {
+  Widget _footerLink(String title) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
-      child: Text(title, style: TextStyle(color: Colors.grey[300]),),
+      child: Text(title, style: TextStyle(color: Colors.grey[300])),
     );
   }
 
- Widget footerLinksColumn() {
-  final links = [
-    'About Us',
-    'Press',
-    'Investors',
-    'Events',
-    'Terms of use',
-    'Privacy policy',
-  ];
+  Widget _footerLinksColumn() {
+    final links = [
+      'About Us',
+      'Press',
+      'Investors',
+      'Events',
+      'Terms of use',
+      'Privacy policy',
+    ];
 
-  return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 30),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Company',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-        ),
-        SizedBox(height: 12),
-        Wrap(
-          spacing: 24,
-          children: links.map((title) => footerLink(title)).toList(),
-        ),
-      ],
-    ),
-  );
-}
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 30),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            'Company',
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 12),
+          Wrap(
+            spacing: 24,
+            children: links.map((title) => _footerLink(title)).toList(),
+          ),
+        ],
+      ),
+    );
+  }
 
-
-  Widget contactButton() {
+  Widget _contactButton() {
     return ElevatedButton(
       onPressed: () {},
       style: ElevatedButton.styleFrom(
-        backgroundColor: Color(0xFF7F6AFF),
-        padding: EdgeInsets.symmetric(horizontal: 32, vertical: 18),
+        backgroundColor: const Color(0xFF7F6AFF),
+        padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 18),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),
-      child: Text('Contact Us',style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+      child: const Text(
+        'Contact Us',
+        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+      ),
     );
   }
 }

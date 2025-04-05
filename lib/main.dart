@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        scaffoldBackgroundColor: Color.fromARGB(255, 255, 254, 254), // Set global background color
+        scaffoldBackgroundColor: Color.fromARGB(255, 255, 254, 254), 
         fontFamily: 'YourCustomFont',
       ),
       home: HomePage(),

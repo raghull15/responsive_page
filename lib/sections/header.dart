@@ -8,7 +8,7 @@ class Header extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text('Power', style: TextStyle(fontSize: 34, fontWeight: FontWeight.bold)),
+          Text('Power & Co', style: TextStyle(fontSize: 34, fontWeight: FontWeight.bold)),
           Row(
             children: [
               _navButton('About Us'),
