@@ -33,7 +33,7 @@ class OurWorkSection extends StatelessWidget {
       _WorkItem(
         title: 'Calendar App for Big SaaS Company',
         image: 'assets/calendar_app.jpeg',
-        description: "A powerful scheduling tool built for enterprise teams — streamline meetings, sync across platforms, and boost productivity at scale.",
+        description: 'Makes the day bleshing and wonderful through the good dates and good vibes.',
       ),
     ];
 

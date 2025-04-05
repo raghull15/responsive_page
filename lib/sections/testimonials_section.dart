@@ -13,7 +13,7 @@ class _TestimonialsSectionState extends State<TestimonialsSection> {
     {'image': 'assets/user2.jpeg', 'name': 'Chivaraam', 'title': 'Amazin'},
     {'image': 'assets/user3.jpeg', 'name': 'Jhalesh', 'title': 'Founder of Macrosoft'},
     {'image': 'assets/user4.jpeg', 'name': 'Saravannan', 'title': 'Dev at Cart'},
-    {'image': 'assets/user5.jpeg', 'name': 'Suriya', 'title': 'UX at Tigma'},
+    {'image': 'assets/user5.jpeg', 'name': 'Suriya', 'title': 'UX Tigma'},
   ];
 
   @override

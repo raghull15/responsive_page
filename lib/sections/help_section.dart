@@ -31,7 +31,7 @@ class HelpSection extends StatelessWidget {
                     textAlign: isWide ? TextAlign.start : TextAlign.center,
                   ),
                   const SizedBox(height: 32),
-                  _emailForm(isWide),
+                  _emailForm(isWide), // Pass isWide argument
                 ],
               );
 
@@ -124,7 +124,7 @@ class HelpSection extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: Text(
             'Subscribe',
-            style: TextStyle(color: Colors.white, fontSize: 16),
+            style: TextStyle(color: Colors.white, fontSize: 12),
           ),
         ),
       ),
@@ -183,7 +183,7 @@ class HelpSection extends StatelessWidget {
               const Text(
                 'Power & Co',
                 style: TextStyle(
-                  fontSize: 38,
+                  fontSize: 22,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
                 ),
@@ -219,8 +219,8 @@ class HelpSection extends StatelessWidget {
           ),
           const SizedBox(height: 32),
           Text(
-            '© power & co 2025 – All Rights Reserved',
-            style: TextStyle(color: Colors.grey[400], fontSize: 14),
+            '© power & co 2021 – All Rights Reserved',
+            style: TextStyle(color: Colors.grey[400], fontSize: 12),
           ),
         ],
       ),
@@ -231,9 +231,9 @@ class HelpSection extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 6),
       child: CircleAvatar(
-        radius: 22,
+        radius: 20,
         backgroundColor: const Color(0xFF7F6AFF),
-        child: Icon(icon, size: 26, color: Colors.white),
+        child: Icon(icon, size: 22, color: Colors.white),
       ),
     );
   }
@@ -279,7 +279,7 @@ class HelpSection extends StatelessWidget {
       onPressed: () {},
       style: ElevatedButton.styleFrom(
         backgroundColor: const Color(0xFF7F6AFF),
-        padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 18),
+        padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 18),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),
       child: const Text(

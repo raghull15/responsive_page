@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class HeroSection extends StatelessWidget {
   const HeroSection({super.key});
@@ -23,7 +24,8 @@ class HeroSection extends StatelessWidget {
       children: [
         RichText(
           text: const TextSpan(
-            style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold, color: Colors.black),
+            style: TextStyle(
+                fontSize: 36, fontWeight: FontWeight.bold, color: Colors.black),
             children: [
               TextSpan(text: 'We Design Impactful\n'),
               TextSpan(text: 'Digital ', style: TextStyle(color: Colors.blue)),
@@ -43,11 +45,15 @@ class HeroSection extends StatelessWidget {
               onPressed: () {},
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blue,
-                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 26, vertical: 16),
               ),
               child: const Text(
                 'Contact Us',
-                style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14),
               ),
             ),
             const SizedBox(width: 16),
@@ -60,7 +66,7 @@ class HeroSection extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.black87,
                     fontWeight: FontWeight.bold,
-                    fontSize: 16,
+                    fontSize: 14,
                   ),
                 ),
               ],
@@ -72,46 +78,90 @@ class HeroSection extends StatelessWidget {
   }
 
   Widget _buildHeroImage() {
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            border: Border.all(color: Colors.blue.shade100, width: 20),
-          ),
-          child: ClipOval(
-            child: Image.asset(
-              'assets/steve.jpeg',
-              width: 250,
-              height: 250,
-              fit: BoxFit.cover,
+    return ResponsiveBuilder(
+      builder: (context, sizingInformation) {
+        double imageSize = 250;
+        double borderSize = 20;
+        double iconRadius = 20;
+
+        if (sizingInformation.isMobile) {
+          imageSize = 150;
+          borderSize = 10;
+          iconRadius = 15;
+        } else if (sizingInformation.isTablet) {
+          imageSize = 200;
+          borderSize = 15;
+          iconRadius = 18;
+        }
+
+        return Stack(
+          alignment: Alignment.center,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(color: Colors.blue.shade100, width: borderSize),
+              ),
+              child: ClipOval(
+                child: Image.asset(
+                  'assets/steve.jpeg',
+                  width: imageSize,
+                  height: imageSize,
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
-          ),
-        ),
-        Positioned(top: 20, left: 20, child: _buildCircleIcon('assets/icon1.png')),
-        Positioned(bottom: 30, right: 20, child: _buildCircleIcon('assets/icon2.jpeg')),
-        Positioned(bottom: 10, left: 5, child: _buildEmployeeInfoCard()),
-      ],
+            Positioned(
+                top: 10,
+                left: 40,
+                child: _buildCircleIcon('assets/icon1.png', iconRadius)),
+            Positioned(
+                bottom: 20,
+                right: 40,
+                child: _buildCircleIcon('assets/icon2.jpeg', iconRadius)),
+            Positioned(bottom: 10, left: 5, child: _buildEmployeeInfoCard(sizingInformation)),
+          ],
+        );
+      },
     );
   }
 
-  Widget _buildCircleIcon(String assetPath) {
+  Widget _buildCircleIcon(String assetPath, double radius) {
     return CircleAvatar(
-      radius: 20,
+      radius: radius,
       backgroundColor: Colors.white,
       backgroundImage: AssetImage(assetPath),
     );
   }
 
-  Widget _buildEmployeeInfoCard() {
+  Widget _buildEmployeeInfoCard(SizingInformation sizingInformation) {
+    double avatarRadius = 12;
+    double fontSizePrimary = 14;
+    double fontSizeSecondary = 12;
+    double iconSize = 14;
+
+    if (sizingInformation.isMobile) {
+      avatarRadius = 10;
+      fontSizePrimary = 12;
+      fontSizeSecondary = 10;
+      iconSize = 12;
+    } else if (sizingInformation.isTablet) {
+      avatarRadius = 11;
+      fontSizePrimary = 13;
+      fontSizeSecondary = 11;
+      iconSize = 13;
+    }
+
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
-          BoxShadow(color: Colors.grey.withOpacity(0.3), spreadRadius: 2, blurRadius: 5),
+          BoxShadow(
+              color: Colors.grey.withOpacity(0.3),
+              spreadRadius: 2,
+              blurRadius: 5),
         ],
       ),
       child: Row(
@@ -119,19 +169,21 @@ class HeroSection extends StatelessWidget {
           ...['user1.jpeg', 'user2.jpeg', 'user3.jpeg'].map(
             (img) => Padding(
               padding: const EdgeInsets.only(right: 12),
-              child: CircleAvatar(radius: 12, backgroundImage: AssetImage('assets/$img')),
+              child: CircleAvatar(
+                  radius: avatarRadius, backgroundImage: AssetImage('assets/$img')),
             ),
           ),
           const SizedBox(width: 8),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Text('120+ Employees', style: TextStyle(fontWeight: FontWeight.bold)),
+            children: [
+              Text('120+ Employees',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: fontSizePrimary)),
               Row(
                 children: [
-                  Icon(Icons.star, color: Colors.orange, size: 14),
-                  SizedBox(width: 4),
-                  Text('5.0 (3.1K Reviews)', style: TextStyle(fontSize: 12)),
+                  Icon(Icons.star, color: Colors.orange, size: iconSize),
+                  const SizedBox(width: 4),
+                  Text('5.0 (3.1K Reviews)', style: TextStyle(fontSize: fontSizeSecondary)),
                 ],
               ),
             ],
