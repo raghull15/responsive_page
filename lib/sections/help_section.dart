@@ -14,14 +14,16 @@ class HelpSection extends StatelessWidget {
 
               final helpHeader = Column(
                 crossAxisAlignment:
-                    isWide ? CrossAxisAlignment.start : CrossAxisAlignment.center,
+                    isWide
+                        ? CrossAxisAlignment.start
+                        : CrossAxisAlignment.center,
                 children: [
                   Text(
                     'How We Can Help You',
                     style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: const Color(0xFF2F3651),
-                        ),
+                      fontWeight: FontWeight.bold,
+                      color: const Color(0xFF2F3651),
+                    ),
                     textAlign: isWide ? TextAlign.start : TextAlign.center,
                   ),
                   const SizedBox(height: 16),
@@ -49,21 +51,21 @@ class HelpSection extends StatelessWidget {
 
               return isWide
                   ? Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(child: helpHeader),
-                        const SizedBox(width: 48),
-                        Expanded(child: Center(child: servicesGrid)),
-                      ],
-                    )
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(child: helpHeader),
+                      const SizedBox(width: 48),
+                      Expanded(child: Center(child: servicesGrid)),
+                    ],
+                  )
                   : Column(
-                      children: [
-                        helpHeader,
-                        const SizedBox(height: 48),
-                        servicesGrid,
-                      ],
-                    );
+                    children: [
+                      helpHeader,
+                      const SizedBox(height: 48),
+                      servicesGrid,
+                    ],
+                  );
             },
           ),
         ),
@@ -80,11 +82,7 @@ class HelpSection extends StatelessWidget {
         color: const Color(0xFFF5F6FA),
         borderRadius: BorderRadius.circular(12),
         boxShadow: const [
-          BoxShadow(
-            color: Colors.black12,
-            blurRadius: 4,
-            offset: Offset(0, 2),
-          ),
+          BoxShadow(color: Colors.black12, blurRadius: 4, offset: Offset(0, 2)),
         ],
       ),
       child: Row(
@@ -131,13 +129,15 @@ class HelpSection extends StatelessWidget {
     );
 
     return isWide
-        ? Row(children: [emailInput, const SizedBox(width: 16), subscribeButton])
+        ? Row(
+          children: [emailInput, const SizedBox(width: 16), subscribeButton],
+        )
         : Wrap(
-            alignment: WrapAlignment.center,
-            spacing: 16,
-            runSpacing: 12,
-            children: [emailInput, subscribeButton],
-          );
+          alignment: WrapAlignment.center,
+          spacing: 16,
+          runSpacing: 12,
+          children: [emailInput, subscribeButton],
+        );
   }
 
   Widget _serviceTile(IconData icon, String title) {
@@ -205,16 +205,16 @@ class HelpSection extends StatelessWidget {
               final isWide = constraints.maxWidth > 600;
               return isWide
                   ? Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [_footerLinksColumn(), _contactButton()],
-                    )
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [_footerLinksColumn(), _contactButton()],
+                  )
                   : Column(
-                      children: [
-                        _footerLinksColumn(),
-                        const SizedBox(height: 16),
-                        _contactButton(),
-                      ],
-                    );
+                    children: [
+                      _footerLinksColumn(),
+                      const SizedBox(height: 16),
+                      _contactButton(),
+                    ],
+                  );
             },
           ),
           const SizedBox(height: 32),

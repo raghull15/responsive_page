@@ -11,8 +11,16 @@ class _TestimonialsSectionState extends State<TestimonialsSection> {
   final List<Map<String, String>> users = [
     {'image': 'assets/user1.jpeg', 'name': 'Sakthi', 'title': 'CEO at Gogle'},
     {'image': 'assets/user2.jpeg', 'name': 'Chivaraam', 'title': 'Amazin'},
-    {'image': 'assets/user3.jpeg', 'name': 'Jhalesh', 'title': 'Founder of Macrosoft'},
-    {'image': 'assets/user4.jpeg', 'name': 'Saravannan', 'title': 'Dev at Cart'},
+    {
+      'image': 'assets/user3.jpeg',
+      'name': 'Jhalesh',
+      'title': 'Founder of Macrosoft',
+    },
+    {
+      'image': 'assets/user4.jpeg',
+      'name': 'Saravannan',
+      'title': 'Dev at Cart',
+    },
     {'image': 'assets/user5.jpeg', 'name': 'Suriya', 'title': 'UX Tigma'},
   ];
 
@@ -28,12 +36,20 @@ class _TestimonialsSectionState extends State<TestimonialsSection> {
         children: [
           const Text(
             "Let's Hear",
-            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.black87),
+            style: TextStyle(
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
+            ),
           ),
           const SizedBox(height: 8),
           const Text(
             "What They Says",
-            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.black87),
+            style: TextStyle(
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
+            ),
           ),
           const SizedBox(height: 32),
           Padding(
@@ -63,7 +79,11 @@ class _TestimonialsSectionState extends State<TestimonialsSection> {
           const SizedBox(height: 24),
           Text(
             activeUser['name']!,
-            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.black87),
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+              color: Colors.black87,
+            ),
           ),
           Text(
             activeUser['title']!,
@@ -92,7 +112,10 @@ class _TestimonialsSectionState extends State<TestimonialsSection> {
               padding: isActive ? const EdgeInsets.all(2) : EdgeInsets.zero,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                border: isActive ? Border.all(color: Colors.purple, width: 2) : null,
+                border:
+                    isActive
+                        ? Border.all(color: Colors.purple, width: 2)
+                        : null,
               ),
               child: ClipOval(
                 child: Image.asset(

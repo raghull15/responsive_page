@@ -12,8 +12,7 @@ class _TrustedBySectionState extends State<TrustedBySection> {
   late final ScrollController _scrollController;
   Timer? _scrollTimer;
 
-  static const double _scrollSpeed = 50; // pixels per cycle
-  static const double _logoHeight = 30;
+  static const double _scrollSpeed = 50;
   static const double _spacing = 40;
 
   final List<String> _logoPaths = const [
@@ -79,7 +78,12 @@ class _TrustedBySectionState extends State<TrustedBySection> {
                 final logo = _logoPaths[index % _logoPaths.length];
                 return Padding(
                   padding: const EdgeInsets.only(right: _spacing),
-                  child: Image.asset(logo, height: _logoHeight),
+                  child: Image.asset(
+                    logo,
+                    height: 30,
+                    width: 100,
+                    fit: BoxFit.contain,
+                  ),
                 );
               },
             ),

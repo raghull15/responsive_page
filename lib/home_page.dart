@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
             TrustedBySection(),
             OurWorkSection(),
             TestimonialsSection(),
-            HelpSection (),
+            HelpSection(),
           ],
         ),
       ),

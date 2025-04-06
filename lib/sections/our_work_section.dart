@@ -13,27 +13,32 @@ class OurWorkSection extends StatelessWidget {
       _WorkItem(
         title: 'App Redesign',
         image: 'assets/app_redesign.jpeg',
-        description: "A modern revamp focusing on improved user experience, clean visuals, intuitive navigation, and optimized performance across devices.",
+        description:
+            "A modern revamp focusing on improved user experience, clean visuals, intuitive navigation, and optimized performance across devices.",
       ),
       _WorkItem(
         title: 'Redesign ECommerce Website',
         image: 'assets/ecommerce_redesign.jpeg',
-        description: "Redesigned with a sleek UI, faster checkout, mobile-first experience, and personalized product discovery to boost conversions and user engagement.",
+        description:
+            "Redesigned with a sleek UI, faster checkout, mobile-first experience, and personalized product discovery to boost conversions and user engagement.",
       ),
       _WorkItem(
         title: 'NexaCenter App for Property',
         image: 'assets/nexa_center_app.jpeg',
-        description: "NexaCenter is a smart property management app designed to simplify listings, streamline tenant interactions, and provide real-time insights for owners and agents.",
+        description:
+            "NexaCenter is a smart property management app designed to simplify listings, streamline tenant interactions, and provide real-time insights for owners and agents.",
       ),
       _WorkItem(
         title: 'Social Media App Platform',
         image: 'assets/social_media_app.jpeg',
-        description: "A dynamic platform to connect, share, and engage with a community through posts, stories, and real-time interactions.",
+        description:
+            "A dynamic platform to connect, share, and engage with a community through posts, stories, and real-time interactions.",
       ),
       _WorkItem(
         title: 'Calendar App for Big SaaS Company',
         image: 'assets/calendar_app.jpeg',
-        description: 'Makes the day bleshing and wonderful through the good dates and good vibes.',
+        description:
+            'Makes the day bleshing and wonderful through the good dates and good vibes.',
       ),
     ];
 
@@ -68,7 +73,9 @@ class OurWorkSection extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         color: Colors.white,
-        boxShadow: [BoxShadow(color: Colors.grey.withOpacity(0.2), blurRadius: 5)],
+        boxShadow: [
+          BoxShadow(color: Colors.grey.withOpacity(0.2), blurRadius: 5),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -87,9 +94,18 @@ class OurWorkSection extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(item.title, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                Text(
+                  item.title,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 const SizedBox(height: 8),
-                Text(item.description, style: TextStyle(color: Colors.grey[600], fontSize: 14)),
+                Text(
+                  item.description,
+                  style: TextStyle(color: Colors.grey[600], fontSize: 14),
+                ),
               ],
             ),
           ),

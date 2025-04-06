@@ -14,7 +14,13 @@ class Header extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Power & Co', style: TextStyle(fontSize: isMobile ? 24 : 34, fontWeight: FontWeight.bold)),
+              Text(
+                'Power & Co',
+                style: TextStyle(
+                  fontSize: isMobile ? 24 : 34,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               if (!isMobile)
                 Row(
                   children: [
