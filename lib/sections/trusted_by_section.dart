@@ -65,7 +65,7 @@ class _TrustedBySectionState extends State<TrustedBySection> {
         children: [
           Text(
             'Trusted By Greatest Companies',
-            style: TextStyle(fontSize: 26, color: Colors.grey[600]),
+            style: TextStyle(fontSize: 24, color: Colors.grey[600]),
           ),
           const SizedBox(height: 100),
           SizedBox(

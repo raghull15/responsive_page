@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HelpSection extends StatelessWidget {
+  const HelpSection({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -33,7 +36,7 @@ class HelpSection extends StatelessWidget {
                     textAlign: isWide ? TextAlign.start : TextAlign.center,
                   ),
                   const SizedBox(height: 32),
-                  _emailForm(isWide), // Pass isWide argument
+                  _emailForm(isWide),
                 ],
               );
 
@@ -177,27 +180,46 @@ class HelpSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(
-                'Power & Co',
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-              Row(
-                children: [
-                  _footerSocialIcon(Icons.youtube_searched_for),
-                  _footerSocialIcon(Icons.facebook),
-                  _footerSocialIcon(Icons.alternate_email),
-                  _footerSocialIcon(Icons.code),
-                  _footerSocialIcon(Icons.camera_alt_outlined),
-                ],
-              ),
-            ],
+          LayoutBuilder(
+            builder: (context, constraints) {
+              final isWide = constraints.maxWidth > 600;
+
+              return isWide
+                  ? Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'Power & Co',
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Row(children: _buildSocialIcons()),
+                    ],
+                  )
+                  : Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const Text(
+                        'Power & Co',
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      Wrap(
+                        alignment: WrapAlignment.center,
+                        spacing: 12,
+                        runSpacing: 12,
+                        children: _buildSocialIcons(),
+                      ),
+                    ],
+                  );
+            },
           ),
           const Divider(color: Colors.white24, height: 40),
           LayoutBuilder(
@@ -227,13 +249,25 @@ class HelpSection extends StatelessWidget {
     );
   }
 
+  List<Widget> _buildSocialIcons() {
+    final icons = [
+      FontAwesomeIcons.youtube,
+      FontAwesomeIcons.facebookF,
+      FontAwesomeIcons.xTwitter,
+      FontAwesomeIcons.github,
+      FontAwesomeIcons.instagram,
+    ];
+
+    return icons.map((icon) => _footerSocialIcon(icon)).toList();
+  }
+
   Widget _footerSocialIcon(IconData icon) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 6),
       child: CircleAvatar(
         radius: 20,
         backgroundColor: const Color(0xFF7F6AFF),
-        child: Icon(icon, size: 22, color: Colors.white),
+        child: Icon(icon, size: 18, color: Colors.white),
       ),
     );
   }
@@ -262,8 +296,13 @@ class HelpSection extends StatelessWidget {
         children: [
           const Text(
             'Company',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 20, 
+            ),
           ),
+
           const SizedBox(height: 12),
           Wrap(
             spacing: 24,

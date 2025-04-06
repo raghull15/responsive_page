@@ -27,10 +27,11 @@ class _TestimonialsSectionState extends State<TestimonialsSection> {
   @override
   Widget build(BuildContext context) {
     final activeUser = users[activeIndex];
+    final screenWidth = MediaQuery.of(context).size.width;
 
     return Container(
       color: Colors.white,
-      padding: const EdgeInsets.symmetric(vertical: 64),
+      padding: const EdgeInsets.symmetric(vertical: 64, horizontal: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -53,24 +54,33 @@ class _TestimonialsSectionState extends State<TestimonialsSection> {
           ),
           const SizedBox(height: 32),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 48),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+            padding: EdgeInsets.symmetric(
+              horizontal: screenWidth < 600 ? 16 : 48,
+            ),
+            child: Column(
               children: [
-                const Icon(Icons.format_quote, color: Colors.purple, size: 32),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: Text(
-                    "Pain itself, it is important to be free from, but pursued by some, is a part of the elite way of living."
-                    "Laughter or craving for refined balance—every individual at the peak."
-                    "No sadness or pain, only proper posture and effort for the comfort of ease."
-                    "Pain is felt in the experience of pleasure when being blamed or criticized.",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 16, color: Colors.grey[700]),
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Icon(Icons.format_quote, color: Colors.purple, size: 32),
+                  ],
                 ),
-                const SizedBox(width: 16),
-                const Icon(Icons.format_quote, color: Colors.purple, size: 32),
+                const SizedBox(height: 16),
+                Text(
+                  "Pain itself, it is important to be free from, but pursued by some, is a part of the elite way of living. "
+                  "Laughter or craving for refined balance—every individual at the peak. "
+                  "No sadness or pain, only proper posture and effort for the comfort of ease. "
+                  "Pain is felt in the experience of pleasure when being blamed or criticized.",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 16, color: Colors.grey[700]),
+                ),
+                const SizedBox(height: 16),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Icon(Icons.format_quote, color: Colors.purple, size: 32),
+                  ],
+                ),
               ],
             ),
           ),
@@ -95,8 +105,10 @@ class _TestimonialsSectionState extends State<TestimonialsSection> {
   }
 
   Widget _buildAvatarRow() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+    return Wrap(
+      spacing: 16,
+      runSpacing: 16,
+      alignment: WrapAlignment.center,
       children: List.generate(users.length, (index) {
         final user = users[index];
         final isActive = index == activeIndex;
@@ -105,25 +117,20 @@ class _TestimonialsSectionState extends State<TestimonialsSection> {
           onTap: () {
             setState(() => activeIndex = index);
           },
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: AnimatedContainer(
-              duration: const Duration(milliseconds: 300),
-              padding: isActive ? const EdgeInsets.all(2) : EdgeInsets.zero,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border:
-                    isActive
-                        ? Border.all(color: Colors.purple, width: 2)
-                        : null,
-              ),
-              child: ClipOval(
-                child: Image.asset(
-                  user['image']!,
-                  width: 64,
-                  height: 64,
-                  fit: BoxFit.cover,
-                ),
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 300),
+            padding: isActive ? const EdgeInsets.all(2) : EdgeInsets.zero,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border:
+                  isActive ? Border.all(color: Colors.purple, width: 2) : null,
+            ),
+            child: ClipOval(
+              child: Image.asset(
+                user['image']!,
+                width: 64,
+                height: 64,
+                fit: BoxFit.cover,
               ),
             ),
           ),

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class Header extends StatelessWidget {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> scaffoldKey;
+
+  const Header({super.key, required this.scaffoldKey});
 
   @override
   Widget build(BuildContext context) {
@@ -30,12 +32,12 @@ class Header extends StatelessWidget {
                     _navButton('Blog'),
                     _navButton('Contact'),
                   ],
-                ),
-              if (isMobile)
+                )
+              else
                 IconButton(
                   icon: Icon(Icons.menu),
                   onPressed: () {
-                    _scaffoldKey.currentState?.openEndDrawer();
+                    scaffoldKey.currentState?.openEndDrawer();
                   },
                 ),
             ],
@@ -48,7 +50,11 @@ class Header extends StatelessWidget {
   Widget _navButton(String label) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5.0),
-      child: TextButton(onPressed: () {}, child: Text(label)),
+      child: TextButton(
+        onPressed: () {
+        },
+        child: Text(label),
+      ),
     );
   }
 }
